@@ -20,6 +20,7 @@ volumes:
 
 services:
   mariadb:
+    restart: always
     image: mariadb:10.0
     environment:
       - MYSQL_ROOT_PASSWORD=root
@@ -32,6 +33,7 @@ services:
       - db:/var/lib/mysql
 
   activemq:
+    restart: always
     image: webcenter/activemq:5.14.3
     environment:
       - ACTIVEMQ_MIN_MEMORY=128
@@ -44,6 +46,7 @@ services:
       - ./assets/activemq.xml:/opt/activemq/conf/activemq.xml:ro
 
   opencast:
+    restart: always
     image: quay.io/opencast/allinone:7.4
     environment:
       - ORG_OPENCASTPROJECT_SERVER_URL=http://localhost:8080
